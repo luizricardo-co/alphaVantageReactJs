@@ -1,19 +1,19 @@
-import { SEARCH_COMPANY_SUCCESS, SEARCH_COMPANY_ERROR } from "../actions/types";
+import { SEARCH_CHART_ERROR, SEARCH_CHART_SUCCESS } from "../actions/types";
 
 const INITIAL_STATE = {
-  companies: [],
+  indexes: undefined,
   hasError: false
 };
 
 export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case SEARCH_COMPANY_SUCCESS:
+    case SEARCH_CHART_SUCCESS:
       return {
         ...state,
-        companies: action.data,
+        indexes: action.data,
         hasError: false
       };
-    case SEARCH_COMPANY_ERROR:
+    case SEARCH_CHART_ERROR:
       return {
         ...state,
         hasError: true

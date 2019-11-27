@@ -16,7 +16,8 @@ import {
 function Main() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const companies = useSelector(state => state.companies.companies);
+  const companies = useSelector(state => state.companies.companies.bestMatches);
+  const indexes = useSelector(state => state.chatReducer.indexes);
 
   const search = term => {
     setSearchTerm(term);
@@ -30,8 +31,10 @@ function Main() {
           <Search handler={e => search(e.target.value)} value={searchTerm} />
         </SearchBarSection>
         <GridSection>
-          {companies.length > 0 && <Grid items={companies} />}
-          <Chart />
+          {companies !== undefined && companies.length > 0 && (
+            <Grid items={companies} />
+          )}
+          {indexes !== undefined && <Chart indexes={indexes} />}
         </GridSection>
       </ContentSection>
     </RootContainer>

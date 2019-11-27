@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: inline-flex;
-  height: 150px;
+  height: 70px;
   width: calc(20% - 45px);
   margin-top: 16px;
   margin-bottom: 20px;
@@ -14,6 +14,7 @@ const Container = styled.div`
 const Content = styled.div`
   height: 100%;
   width: 100%;
+  cursor: pointer;
   margin-left: 20px;
   margin-top: 5px;
   margin-bottom: 15px;
@@ -22,9 +23,8 @@ const Content = styled.div`
 const Text = styled.div`
   position: relative;
   margin-bottom: 15px;
-  height: 3.6em;
 
-  font-size: 16px;
+  font-size: 12px;
   font-weight bold;
   color: #9D9FB0;
 

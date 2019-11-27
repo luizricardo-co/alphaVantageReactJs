@@ -17,7 +17,7 @@ function Search({ handler, value }) {
       <SearchInput
         onChange={handler}
         value={value}
-        placeholder="Search by company name"
+        placeholder="Search by symbol or company name"
       />
       <SearchIcon onClick={onSearch}>
         <MdSearch />

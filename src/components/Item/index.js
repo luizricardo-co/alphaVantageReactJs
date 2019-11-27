@@ -2,32 +2,35 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { Container, Content, Text } from "./styled";
+import { searchBySymbol } from "../../actions/companies";
+import { useDispatch } from "react-redux";
 
-function Item({ image, title, overview, ratings }) {
+function Item({ symbol, description }) {
+  const dispatch = useDispatch();
+  const onSearch = symbol => {
+    dispatch(searchBySymbol(symbol));
+  };
+
   return (
-    <Container>
+    <Container onClick={() => onSearch(symbol)}>
       <Content>
         <Text weight="bolder" relative>
-          Symbol: {title}
+          Symbol: {symbol}
         </Text>
-        <Text color="#BFC0CE">{overview}</Text>
+        <Text color="#BFC0CE">{description}</Text>
       </Content>
     </Container>
   );
 }
 
 Item.propTypes = {
-  image: PropTypes.string,
-  title: PropTypes.string,
-  overview: PropTypes.string,
-  ratings: PropTypes.string
+  symbol: PropTypes.string,
+  description: PropTypes.string
 };
 
 Item.defaultProps = {
-  image: "",
   title: "",
-  overview: "",
-  ratings: ""
+  description: ""
 };
 
 export default Item;

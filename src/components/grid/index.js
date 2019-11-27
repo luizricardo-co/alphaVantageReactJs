@@ -4,17 +4,16 @@ import PropTypes from "prop-types";
 import GridItem from "../Item";
 
 import GridContainer from "./styled";
-function Grid(items) {
+function Grid({ items }) {
   return (
     <GridContainer>
-      {items.items[0].map((item, i) => {
+      {items.map((item, i) => {
         const idx = i;
         return (
           <GridItem
             key={idx}
-            title={item["1. symbol"]}
-            overview={item.overview}
-            ratings={item.vote_average}
+            symbol={item["1. symbol"]}
+            description={item["2. name"]}
           />
         );
       })}

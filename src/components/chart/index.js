@@ -1,36 +1,60 @@
 import React from "react";
 import { Chart } from "react-google-charts";
 import { ChartContent } from "./styled";
+import PropTypes from "prop-types";
 
-function ChartData(data) {
+const subtitle = ["Period", "High"];
+
+function ChartData({ indexes }) {
+  const chartData = [];
+  chartData.push(subtitle);
+  const keys = Object.keys(indexes["Time Series (Daily)"]);
+
+  for (let i = 0; i < keys.length; i++) {
+    const element = keys[i];
+    const vwlu = [
+      new Date(element),
+      Number(indexes["Time Series (Daily)"][element]["2. high"])
+    ];
+    chartData.push(vwlu);
+  }
+
   return (
     <ChartContent>
       <Chart
         width={"100%"}
         height={"300px"}
         chartType="AreaChart"
-        className="App-chart"
         loader={<div>Loading Chart</div>}
-        data={[
-          ["Period", "High", "Low", "Transitons per"],
-          ["2013", 1000, 400, 121],
-          ["2014", 1170, 460, 102],
-          ["2015", 660, 1120, 126],
-          ["2016", 1030, 540, 12]
-        ]}
+        data={chartData}
         options={{
           title: "Company Performance",
           hAxis: { title: "Year", titleTextStyle: { color: "#333" } },
           vAxis: { minValue: 0 },
-          // For the legend to fit, we make the chart area smaller
-          chartArea: { width: "50%", height: "70%" }
-          // lineWidth: 25
+          chartArea: { width: "60%", height: "70%" },
+          lineWidth: 2
         }}
-        // For tests
         rootProps={{ "data-testid": "1" }}
+        chartPackages={["corechart", "controls"]}
+        controls={[
+          {
+            controlType: "DateRangeFilter",
+            options: {
+              filterColumnLabel: "Period",
+              ui: { format: { pattern: "YYYY/MM" } }
+            }
+          }
+        ]}
       />
     </ChartContent>
   );
 }
 
+ChartData.propTypes = {
+  indexes: PropTypes.any
+};
+
+ChartData.defaultProps = {
+  indexes: {}
+};
 export default ChartData;
