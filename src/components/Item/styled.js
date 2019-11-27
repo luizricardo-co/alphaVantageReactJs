@@ -8,9 +8,7 @@ const Container = styled.div`
   margin-bottom: 20px;
   margin-right: 15px;
   padding: 15px;
-
   background: white;
-  box-shadow: 10px 5px 15px #e0e5ec;
 `;
 
 const Content = styled.div`

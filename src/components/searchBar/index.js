@@ -9,7 +9,6 @@ function Search({ handler, value }) {
   const dispatch = useDispatch();
 
   const onSearch = () => {
-    console.log("dispach");
     dispatch(searchByCompanyName(value));
   };
 

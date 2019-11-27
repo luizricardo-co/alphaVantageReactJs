@@ -16,7 +16,7 @@ const ContentSection = styled.div`
   color: white;
 `;
 const Logo = styled.div`
-  height: 30vmin;
+  height: 40vmin;
   background-image: url(${props => props.image && props.image});
   background-position: center center;
   background-repeat: no-repeat;

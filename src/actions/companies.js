@@ -3,11 +3,9 @@ import { SEARCH_COMPANY_SUCCESS, SEARCH_COMPANY_ERROR } from "./types";
 import Constants from "../utils/Constants";
 
 export const onSearchSuccess = data => {
-  const hasMoreThanZero = data.bestMatches.length > 0;
   return {
     type: SEARCH_COMPANY_SUCCESS,
-    data: data.bestMatches,
-    hasMoreThanZero
+    data: data.bestMatches
   };
 };
 

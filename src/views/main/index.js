@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Search from "../../components/searchBar";
 import Grid from "../../components/grid";
+import Chart from "../../components/chart";
 import logo from "../../logo.svg";
 import { useSelector } from "react-redux";
 
@@ -24,12 +25,13 @@ function Main() {
   return (
     <RootContainer>
       <ContentSection>
-        {/* <Logo image={logo} /> */}
+        <Logo image={logo} />
         <SearchBarSection>
           <Search handler={e => search(e.target.value)} value={searchTerm} />
         </SearchBarSection>
         <GridSection>
           {companies.length > 0 && <Grid items={companies} />}
+          <Chart />
         </GridSection>
       </ContentSection>
     </RootContainer>
