@@ -2,11 +2,13 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
 import companiesReducer from "./reducers/companiesReducer";
-import chatReducer from "./reducers/chartReducer";
+import tableReducer from "./reducers/tableReducer";
+import chartReducer from "./reducers/chartReducer";
 
 const rootReducer = combineReducers({
   companies: companiesReducer,
-  chatReducer
+  tableReducer,
+  chartReducer
 });
 
 const configureStore = () => {

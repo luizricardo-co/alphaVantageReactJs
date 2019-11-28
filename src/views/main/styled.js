@@ -38,5 +38,18 @@ const GridSection = styled.section`
   padding: 20px;
   overflow-y: scroll;
 `;
-
-export { RootContainer, ContentSection, Logo, SearchBarSection, GridSection };
+const TableSection = styled.section`
+  height: calc(100% - 88px);
+  width: calc(100% - 28px);
+  padding: 20px;
+  overflow-y: scroll;
+  color: #000;
+`;
+export {
+  RootContainer,
+  ContentSection,
+  Logo,
+  SearchBarSection,
+  GridSection,
+  TableSection
+};

@@ -1,22 +1,19 @@
-import {
-  SEARCH_INTRADAY_SUCCESS,
-  SEARCH_INTRADAY_ERROR
-} from "../actions/types";
+import { SEARCH_TABLE_ERROR, SEARCH_TABLE_SUCCESS } from "../actions/types";
 
 const INITIAL_STATE = {
-  data: undefined,
+  indexes: undefined,
   hasError: false
 };
 
 export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case SEARCH_INTRADAY_SUCCESS:
+    case SEARCH_TABLE_SUCCESS:
       return {
         ...state,
-        data: action.data,
+        indexes: action.data,
         hasError: false
       };
-    case SEARCH_INTRADAY_ERROR:
+    case SEARCH_TABLE_ERROR:
       return {
         ...state,
         hasError: true

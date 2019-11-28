@@ -6,15 +6,23 @@ import PropTypes from "prop-types";
 const subtitle = ["Period", "High"];
 
 function ChartData({ indexes }) {
+  if (!indexes["Time Series (5min)"]) {
+    alert(
+      `Houve um problema na pesquisa.\nPor favor tente novamente!\n${indexes.Note}`
+    );
+
+    return <div />;
+  }
+
   const chartData = [];
   chartData.push(subtitle);
-  const keys = Object.keys(indexes["Time Series (Daily)"]);
+  const keys = Object.keys(indexes["Time Series (5min)"]);
 
   for (let i = 0; i < keys.length; i++) {
     const element = keys[i];
     const vwlu = [
       new Date(element),
-      Number(indexes["Time Series (Daily)"][element]["2. high"])
+      Number(indexes["Time Series (5min)"][element]["2. high"])
     ];
     chartData.push(vwlu);
   }
@@ -29,7 +37,7 @@ function ChartData({ indexes }) {
         data={chartData}
         options={{
           title: "Company Performance",
-          hAxis: { title: "Year", titleTextStyle: { color: "#333" } },
+          hAxis: { title: "Year", titleTextStyle: { color: "#000" } },
           vAxis: { minValue: 0 },
           chartArea: { width: "60%", height: "70%" },
           lineWidth: 2
@@ -41,7 +49,7 @@ function ChartData({ indexes }) {
             controlType: "DateRangeFilter",
             options: {
               filterColumnLabel: "Period",
-              ui: { format: { pattern: "YYYY/MM" } }
+              ui: { format: { pattern: "YYYY-MM" } }
             }
           }
         ]}
